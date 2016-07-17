@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+
+        
+{% if progress != 0 %}              
+    <div class="col-md-12">
+        <!--progress bar start-->
+        <section class="panel">
+            <header class="panel-heading">
+                Project Progress
+            </header>
+            <div class="panel-body">
+                <p>Progress is {{ progress }}%</p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success progress-bar" role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%">
+                        <span class="sr-only">{{ progress }}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--progress bar end-->
+    </div>
+{% else %}
+    <div class="col-md-12">
+        <div class="alert alert-info ">
+            <button data-dismiss="alert" class="close close-sm" type="button">
+                <i class="fa fa-times"></i>
+            </button>
+            <strong>Important. </strong> The project is not started yet. Statistics and progress will be visible after the project starts.
+        </div>
+    </div>
+{% endif %}
+
+
+
+   
+{% endblock %}

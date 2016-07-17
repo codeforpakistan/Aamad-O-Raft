@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+
+<style>
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+</style>
+
+                    
+    <div class="col-md-12">
+        
+        <section class="panel">
+            <header class="panel-heading">
+                Job Data  Visualizations
+            </header>
+            <div class="col-md-12">
+                <div id="chart2"></div>
+            </div>
+
+            <div class="col-md-12">
+                <div id="chart"></div>
+            </div>
+        </section>
+    </div>
+            
+{% endblock %}

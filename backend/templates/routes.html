@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+
+        
+                    
+<div class="col-md-12">
+                    <div class="panel">
+                        <header class="panel-heading">
+                            Route 1C
+
+                        </header>
+                        <!-- <div class="box-header"> -->
+                            <!-- <h3 class="box-title">Responsive Hover Table</h3> -->
+
+                        <!-- </div> -->
+                        <div class="panel-body center">
+                            <div id="map" style="width:700px;height:500px;margin:0 auto;border: 2px solid #bbb">
+                                
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->   
+</div>
+    
+            <script>
+               var directionDisplay;
+          var directionsService = new google.maps.DirectionsService();
+          var map;
+
+          function initialize() {
+              directionsDisplay = new google.maps.DirectionsRenderer({
+              });
+
+
+              var myOptions = {
+                  zoom: 10,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP,
+              }
+
+
+              map = new google.maps.Map(document.getElementById("map"), myOptions);
+              directionsDisplay.setMap(map);
+              calcRoute();
+          }
+
+          function calcRoute() {
+
+              var waypts = [];
+
+
+              stop = new google.maps.LatLng(51.943571, 6.463856)
+                      waypts.push({
+                          location:stop,
+                          stopover:true});
+              stop = new google.maps.LatLng(51.945032, 6.465776)
+                      waypts.push({
+                          location:stop,
+                          stopover:true});
+              stop = new google.maps.LatLng(51.945538, 6.469413)
+                      waypts.push({
+                          location:stop,
+                          stopover:true});
+              stop = new google.maps.LatLng(51.947462, 6.467941)
+                      waypts.push({
+                          location:stop,
+                          stopover:true});
+              stop = new google.maps.LatLng(51.945409, 6.465562)
+                      waypts.push({
+                          location:stop,
+                          stopover:true});
+              stop = new google.maps.LatLng(51.943700, 6.462096)
+                      waypts.push({
+                          location:stop,
+                          stopover:true});
+
+              start  = new google.maps.LatLng(51.943382, 6.463116);
+              end = new google.maps.LatLng(51.943382, 6.463116);
+
+              var request = {
+                  origin: start,
+                  destination: end,
+                  waypoints: waypts,
+                  optimizeWaypoints: true,
+                  travelMode: google.maps.DirectionsTravelMode.WALKING
+              };
+
+              directionsService.route(request, function(response, status) {
+                  if (status == google.maps.DirectionsStatus.OK) {
+                      directionsDisplay.setDirections(response);
+                      var route = response.routes[0];
+
+                  }
+              });
+          }               
+
+            </script>
+
+                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYXHnOg6Lb2-mMrVRN8LmxDjkYN9Q82uE&callback=initMap"
+    async defer></script>
+    
+{% endblock %}

@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+
+        
+                    
+<div class="col-md-12">
+                    <div class="panel">
+                        <header class="panel-heading">
+                            Destinations
+
+                        </header>
+                        <!-- <div class="box-header"> -->
+                            <!-- <h3 class="box-title">Responsive Hover Table</h3> -->
+
+                        <!-- </div> -->
+                        <div class="panel-body center">
+                            <div id="map" style="width:700px;height:500px;margin:0 auto;border: 2px solid #bbb">
+                                
+                            </div>
+                        </div><!-- /.box-body -->
+                    </div><!-- /.box -->   
+</div>
+    
+            <script>
+                              var map;
+                              function initMap() {
+
+                                map = new google.maps.Map(document.getElementById('map'), {
+                                  center: {lat: 33.664482, lng: 73.087142},
+                                  zoom: 12,
+                                  mapTypeId: google.maps.MapTypeId.ROADMAP
+
+                                });
+
+                                google.maps.event.addListenerOnce(map, 'idle', function () {
+                                    google.maps.event.trigger(map, 'resize');
+                                });
+
+                                var infowindow = new google.maps.InfoWindow();
+
+                                var marker, i;
+
+                                
+
+                                var locations = {
+                                  "Aabpara Market": {
+                                  "_id": "578aa4b58b3e85065842ad19", 
+                                  "id": 8, 
+                                  "latitude": 33.707225, 
+                                  "longitude": 73.088875, 
+                                  "name": "Aabpara Market"
+                                  }, 
+                                  "Chandni Chowk": {
+                                  "_id": "578aa4b58b3e85065842ad15", 
+                                  "id": 4, 
+                                  "latitude": 33.630385, 
+                                  "longitude": 73.072024, 
+                                  "name": "Chandni Chowk"
+                                  }, 
+                                  "Faizabad": {
+                                  "_id": "578aa4b58b3e85065842ad17", 
+                                  "id": 6, 
+                                  "latitude": 33.664482, 
+                                  "longitude": 73.087142, 
+                                  "name": "Faizabad"
+                                  }, 
+                                  "Marheer Hassan": {
+                                  "_id": "578aa4b58b3e85065842ad14", 
+                                  "id": 3, 
+                                  "latitude": 33.599879, 
+                                  "longitude": 73.06328, 
+                                  "name": "Marheer Hassan"
+                                  }, 
+                                  "Melody Market": {
+                                  "_id": "578aa4b58b3e85065842ad1a", 
+                                  "id": 9, 
+                                  "latitude": 33.717413, 
+                                  "longitude": 73.08639, 
+                                  "name": "Melody Market"
+                                  }, 
+                                  "Railway Station": {
+                                  "_id": "578aa4b58b3e85065842ad13", 
+                                  "id": 2, 
+                                  "latitude": 33.601799, 
+                                  "longitude": 73.047932, 
+                                  "name": "Railway Station"
+                                  }, 
+                                  "Rehman Abad": {
+                                  "_id": "578aa4b58b3e85065842ad16", 
+                                  "id": 5, 
+                                  "latitude": 33.636132, 
+                                  "longitude": 73.074996, 
+                                  "name": "Rehman Abad"
+                                  }, 
+                                  "Saddar": {
+                                  "_id": "578a91c08b3e85186c1b1054", 
+                                  "id": 1, 
+                                  "latitude": 33.601799, 
+                                  "longitude": 73.047932, 
+                                  "name": "Saddar"
+                                  }, 
+                                  "Secretariat": {
+                                  "_id": "578aa4b58b3e85065842ad1b", 
+                                  "id": 1, 
+                                  "latitude": 33.72946, 
+                                  "longitude": 73.093568, 
+                                  "name": "Secretariat"
+                                  }, 
+                                  "Zero Point": {
+                                  "_id": "578aa4b58b3e85065842ad18", 
+                                  "id": 7, 
+                                  "latitude": 33.693694, 
+                                  "longitude": 73.065189, 
+                                  "name": "Zero Point"
+                                  }
+                                }
+                                
+                                
+                                 
+                                for (var i in locations) { 
+                                
+                                  marker = new google.maps.Marker({
+                                    position: new google.maps.LatLng(locations[i]['latitude'], locations[i]['longitude']),
+                                    map: map
+                                  });
+
+                                  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                                    return function() {
+                                      infowindow.setContent(locations[i]['name']);
+                                      infowindow.open(map, marker);
+                                    }
+                                  })(marker, i));
+                                }
+
+                                
+                              }
+
+                            </script>
+
+                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYXHnOg6Lb2-mMrVRN8LmxDjkYN9Q82uE&callback=initMap"
+    async defer></script>
+    
+{% endblock %}

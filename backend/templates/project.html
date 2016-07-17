@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+
+        
+                    
+    <div class="col-md-12">
+        
+        <section class="panel">
+            <header class="panel-heading">
+                Create New Project
+            </header>
+            <div class="panel-body">
+                <form role="form" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="uploadFiles">Upload Files</label>
+                        <input type="file" class="form-control" id="uploadFiles" name="file" value="{{ request.file }}">
+                        
+                    </div>
+                    <input type="submit" value="Upload" class="btn btn-info"></input>
+                </form>
+
+            </div>
+        </section>
+
+        <section class="panel">
+            <header class="panel-heading">
+                Delete Project
+            </header>
+            <div class="panel-body">
+                <a href="{{ url_for('delete') }}" class="btn btn-info">Delete Project</a>
+            </div>
+        </section>
+    
+            
+{% endblock %}
