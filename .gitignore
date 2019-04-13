@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
