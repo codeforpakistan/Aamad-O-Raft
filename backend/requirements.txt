@@ -1,11 +1,11 @@
-Flask==0.10.1
+flask>=0.12.3
 Jinja2>=2.8.1
 MarkupSafe==0.23
 Werkzeug==0.9.6
 beautifulsoup4==4.3.2
-gunicorn==19.1.1
+gunicorn>=19.5.0
 itsdangerous==0.24
-requests==2.4.1
+requests>=2.20.0
 six==1.8.0
 wsgiref==0.1.2
 bson
